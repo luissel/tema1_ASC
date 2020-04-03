@@ -1,0 +1,37 @@
+Chirita Maria-Luissa 332CA
+Tema 1
+
+Nu a fost nevoie sa folosesc alte variabile de sincronizare, deoarece toate
+operatiile folosite sunt thread safe.
+
+Producer
+   Producatorul primeste o lista de produse pe care el trebuie sa le produca
+   in cantitatea specificatata si dupa un timp anume. Acesta publica fiecare
+   produs in marketplace.
+
+Consumer
+   Consumatorul primeste un id pentru cosul sau de cumparaturi unde va adauga
+   sau va scoate produse. Dupa ce executa operatiile primite (add sau remove)
+   plaseaza comanda si afiseaza toate produsele cumparate.
+
+Marketplace
+   Am generat pentru fiecare producator si consumator un id unic.
+   Pentru a tine evidenta produselor, am folosit un dictionar in care cheia
+   era reprezentata de id-ul producatorului si valoarea era lista cu produse
+   publicate de acesta. 
+   
+   Pentru a retine lista de produse cumparate de fiecare consumator, am folosit
+   un dictionar unde cheia era id-ul cosului.
+   
+   Cand un producator doreste sa publice un produs, verific daca lista asociata
+   id-ului nu este plina si il adaug.
+   
+   Daca un consumator vrea sa elimine un produs din cos, atunci produsul devine
+   disponibil pentru alti consumatori si il adaug in lista producatorului de 
+   unde l-am luat.
+   
+   Daca un consumator doreste sa adauge un produs in cos, parcurg mai intai
+   toate produsele oferite de toti producatorii, iar daca gasesc produsul dorit
+   il adaug in cosul rezervat consumatorului respectiv si il elimin din lista 
+   producatorului. Retin id-ul producatorului in lista caruia am gasit produsul,
+   pentru a sti unde sa il adaug daca consumatorul renunta la acel produs.
